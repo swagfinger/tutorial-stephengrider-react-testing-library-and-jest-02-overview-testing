@@ -5,6 +5,13 @@
 Here you can see a table of HTML elements with their default and desired roles.
 https://www.w3.org/TR/html-aria/#docconformance
 
+## print out testing screen
+
+```js
+// print out test
+screen.debug();
+```
+
 ## get help with a particular element?
 
 - run this helper function inside a test, it will give you a url which represents the code you are testing
