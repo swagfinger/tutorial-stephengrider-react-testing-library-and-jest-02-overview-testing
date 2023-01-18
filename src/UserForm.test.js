@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
-
+import '@testing-library/jest-dom';
 import UserForm from './UserForm';
 
 test('it shows two inputs and a button', () => {
@@ -22,8 +22,14 @@ test('it calls onUserAdd when the form is submitted', () => {
 
   //render the component
   render(<UserForm onUserAdd={mock} />); //callback is onUserAdd() pushes object {name, email}
-  //find 2 inputs
-  const [nameInput, emailInput] = screen.getAllByRole('textbox');
+  const nameInput = screen.getByRole('textbox', {
+    name: /name/i,
+  }); //i ignores case sensative
+
+  const emailInput = screen.getByRole('textbox', {
+    name: /email/i,
+  });
+
   //simulate typing in a name
   user.click(nameInput);
   user.keyboard('jane');
