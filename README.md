@@ -27,3 +27,13 @@ matchers - https://jestjs.io/docs/expect
 
 query - https://testing-library.com/docs/queries/byrole
 matchers - https://github.com/testing-library/jest-dom#custom-matchers
+
+## query function - when aria-roles dont work
+
+1. fallback #1: use data-testid
+2. fallback #2: use container.querySelector()
+
+```js
+// container is a div element wrapping component that is rendered - which allows querySelector
+  const { container } = render(<somecomponent>)
+```
