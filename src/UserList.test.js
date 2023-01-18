@@ -2,14 +2,18 @@ import { render, screen, within } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import UserList from './UserList';
 
-test('render one row per user', () => {
+function renderComponent() {
   const users = [
     { name: 'jane', email: 'jane@jane.com' },
     { name: 'sam', email: 'sam@sam.com' },
   ];
-
   //render the component
-  const { container } = render(<UserList users={users} />);
+  render(<UserList users={users} />);
+  return { users };
+}
+
+test('render one row per user', () => {
+  const { users } = renderComponent();
   // 19. getting help with query
   // eslint-disable-next-line
   //screen.logTestingPlaygroundURL();
@@ -25,12 +29,8 @@ test('render one row per user', () => {
 });
 
 test('render the email and name of each user', () => {
-  const users = [
-    { name: 'jane', email: 'jane@jane.com' },
-    { name: 'sam', email: 'sam@sam.com' },
-  ];
-  //render the component
-  render(<UserList users={users} />);
+  const { users } = renderComponent();
+
   // 19. getting help with query
   // eslint-disable-next-line
   screen.logTestingPlaygroundURL();
